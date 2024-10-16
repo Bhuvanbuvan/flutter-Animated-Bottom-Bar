@@ -82,7 +82,6 @@ class _BottomNavWithAnimatedIconState extends State<BottomNavWithAnimatedIcon> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(bottomNavItems.length, (index) {
               final riveIcon = bottomNavItems[index].rive;
-              final riveArtBord = bottomNavItems[index].rive;
               return GestureDetector(
                 onTap: () {
                   animateTheIcon(index);
@@ -97,19 +96,20 @@ class _BottomNavWithAnimatedIconState extends State<BottomNavWithAnimatedIcon> {
                       isActive: selectedNavIndex == index,
                     ),
                     SizedBox(
-                        height: 36,
-                        width: 36,
-                        child: Opacity(
-                          opacity: selectedNavIndex == index ? 1 : 0.5,
-                          child: RiveAnimation.asset(
-                            riveIcon.srcs,
-                            artboard: riveArtBord.artboard,
-                            onInit: (artboard) {
-                              _riveOnInIt(artboard,
-                                  stateMachineName: riveIcon.stateMachineName);
-                            },
-                          ),
-                        )),
+                      height: 36,
+                      width: 36,
+                      child: Opacity(
+                        opacity: selectedNavIndex == index ? 1 : 0.5,
+                        child: RiveAnimation.asset(
+                          riveIcon.srcs,
+                          artboard: riveIcon.artboard,
+                          onInit: (artboard) {
+                            _riveOnInIt(artboard,
+                                stateMachineName: riveIcon.stateMachineName);
+                          },
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               );
